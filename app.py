@@ -14,6 +14,7 @@ class App:
         self.root.configure(bg="#1e1e1e")
 
         self.image_path = []
+        self.dark_mode = True
 
         # Estilo barra progreso
         style = ttk.Style()
@@ -83,6 +84,20 @@ class App:
         )
         self.btn_folder.pack(pady=5)
 
+        # Botón cambiar tema
+        self.btn_theme = tk.Button(
+            root,
+            text="🌙 Cambiar Modo",
+            command=self.toggle_theme,
+            width=28,
+            height=2,
+            bg="#333333",
+            fg="white",
+            activebackground="#555555",
+            activeforeground="white"
+        )
+        self.btn_theme.pack(pady=5)
+
         # Estado selección
         self.path_label = tk.Label(
             root,
@@ -141,6 +156,89 @@ class App:
             font=("Arial", 11, "bold")
         )
         self.footer.pack(side="bottom", pady=10)
+
+    def toggle_theme(self):
+        if self.dark_mode:
+            # Modo claro
+            self.root.configure(bg="white")
+
+            self.title.configure(bg="white", fg="black")
+            self.description.configure(bg="white", fg="black")
+            self.path_label.configure(bg="white", fg="black")
+            self.preview_label.configure(bg="white")
+            self.status.configure(bg="white", fg="blue")
+            self.footer.configure(bg="white", fg="black")
+
+            self.btn_select.configure(
+                bg="#f0f0f0",
+                fg="black",
+                activebackground="#dddddd",
+                activeforeground="black"
+            )
+
+            self.btn_folder.configure(
+                bg="#f0f0f0",
+                fg="black",
+                activebackground="#dddddd",
+                activeforeground="black"
+            )
+
+            self.btn_theme.configure(
+                bg="#f0f0f0",
+                fg="black",
+                activebackground="#dddddd",
+                activeforeground="black"
+            )
+
+            self.btn_process.configure(
+                bg="#4CAF50",
+                fg="white",
+                activebackground="#45a049",
+                activeforeground="white"
+            )
+
+            self.dark_mode = False
+
+        else:
+            # Modo oscuro
+            self.root.configure(bg="#1e1e1e")
+
+            self.title.configure(bg="#1e1e1e", fg="white")
+            self.description.configure(bg="#1e1e1e", fg="white")
+            self.path_label.configure(bg="#1e1e1e", fg="white")
+            self.preview_label.configure(bg="#1e1e1e")
+            self.status.configure(bg="#1e1e1e", fg="#00ff99")
+            self.footer.configure(bg="#1e1e1e", fg="white")
+
+            self.btn_select.configure(
+                bg="#333333",
+                fg="white",
+                activebackground="#555555",
+                activeforeground="white"
+            )
+
+            self.btn_folder.configure(
+                bg="#333333",
+                fg="white",
+                activebackground="#555555",
+                activeforeground="white"
+            )
+
+            self.btn_theme.configure(
+                bg="#333333",
+                fg="white",
+                activebackground="#555555",
+                activeforeground="white"
+            )
+
+            self.btn_process.configure(
+                bg="#00aa55",
+                fg="white",
+                activebackground="#00cc66",
+                activeforeground="white"
+            )
+
+            self.dark_mode = True
 
     def show_preview(self):
         if self.image_path:
