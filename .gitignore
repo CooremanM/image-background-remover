@@ -1,4 +1,6 @@
+dist/
+release/
 venv/
+build/
 __pycache__/
-output/
 *.pyc
